@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-    <title>Document</title>
+    <title>Just stream it</title>
+    <script type="module" src=".\scripts\scripts.js" defer></script>
 </head>
 <body>
     <nav>
@@ -19,7 +20,8 @@
 <!-- section pour le film avec la meilleur note-->
 
     <div>
-        <div class="container">
+        <h2>Meilleur film</h2>
+        <div class="bestfilm">
             <div class="bf-jacket"><img src="./images/thebiglebowski.png" id="bf-jacket" alt=""></div>
             <div class="bf-title"><h3>Titre du film</h3></div>
             <div class="bf-description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -74,7 +76,7 @@
 
 <div class="select-genre">
     <h2 class="title-genre">Autres :</h2>   
-    <select name="genre" id="select-genre1"></select> 
+    <select name="genre" id="select-genre1" class="select"></select> 
         <!-- liste déroulante des genres généré via JS-->
 </div>
 
@@ -92,7 +94,7 @@
 
     <div class="select-genre">
         <h2 class="title-genre">Autres :</h2>
-        <select name="genre2" id="select-genre2"></select>
+        <select name="genre2" id="select-genre2" class="select"></select>
     </div>
 
     <div class="gallery" id="gallery5" >
@@ -115,7 +117,7 @@
     
     </div>
 
-    <script type="module" src=".\scripts\scripts.js" defer></script>
+    
 
 </body>
 
