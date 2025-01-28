@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <img src="./images/logo.png" alt="Logo du site" id="logo">
+        </div>
+        <h1 id="name">Vidéos à la demande</h1>
+    </nav>
+
+<!-- section pour le film avec la meilleur note-->
+
+    <div>
+        <div class="container">
+            <div class="bf-jacket"><img src="./images/thebiglebowski.png" id="bf-jacket" alt=""></div>
+            <div class="bf-title"><h3>Titre du film</h3></div>
+            <div class="bf-description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                 Vel ad, rerum sunt itaque saepe aspernatur obcaecati ipsa, soluta repellendus
+                 sint libero veniam unde tenetur corporis expedita nihil, aliquam culpa magni.</p>
+            </div>
+            
+            <div class="btn detail">
+                <button id="bf-button-detail" class="btn detail">détails</button>
+            </div>
+        </div>
+    </div>
+   
+<!--galerie pour les films mysterieux-->
+
+    <h2 class="title-genre">Mystery</h2>
+
+    <div class="gallery" id="gallery1" >
+    
+    </div>
+    
+    <div class="toggleButton">
+        <button id="toggleButton-gallery1" class="toggle">voir plus</button>
+    </div>
+    
+
+<!--galerie pour les films d'animation-->
+
+    <h2 class="title-genre">Animation</h2>
+
+    <div class="gallery" id="gallery2" >
+        
+        
+    </div>
+    <div class="toggleButton">
+        <button id="toggleButton-gallery2" class="toggle">voir plus</button>
+    </div>
+
+<!--galerie pour les films d'horreur-->
+
+    <h2 class="title-genre">Horror</h2>
+
+    <div class="gallery" id="gallery3" >
+        
+
+    </div>
+    <div class="toggleButton" >
+        <button id="toggleButton-gallery3" class="toggle">voir plus</button>
+    </div>
+        
+<!-- seconde gallery pour les autres genres -->
+
+<div class="select-genre">
+    <h2 class="title-genre">Autres :</h2>   
+    <select name="genre" id="select-genre1"></select> 
+        <!-- liste déroulante des genres généré via JS-->
+</div>
+
+    <div class="gallery" id="gallery4" >
+        <!-- galerie renseignée via js -->
+    
+    </div>
+<div class="toggleButton">
+    <button id="toggleButton-gallery4" class="toggle">voir plus</button>
+</div>
+
+    
+    
+<!-- seconde gallery pour les autres genres -->
+
+    <div class="select-genre">
+        <h2 class="title-genre">Autres :</h2>
+        <select name="genre2" id="select-genre2"></select>
+    </div>
+
+    <div class="gallery" id="gallery5" >
+        <!-- galerie renseignée via js -->
+    </div>
+    <div class="toggleButton">
+        <button id="toggleButton-gallery5" class="toggle">voir plus</button>
+    </div>
+
+
+<!-- Modale affichéee lors des appuis sur les boutons détails-->
+    <div id="modal" class="modal">
+        <span class="close" id="close-modal">&times;</span>
+
+    
+        <div class="modal-content">
+            
+        </div>   
+    
+    
+    </div>
+
+    <script type="module" src=".\scripts\scripts.js" defer></script>
+
+</body>
+
+</html>
