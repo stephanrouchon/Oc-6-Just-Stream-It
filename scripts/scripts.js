@@ -84,8 +84,6 @@ async function getDataMoviesGenre(genre){
     return moviesData;
 }
 
-
-
 //genere une card pour un film
 function createMovieCard(movieData, index){
             
@@ -99,18 +97,27 @@ function createMovieCard(movieData, index){
         if ((index === 4) || (index === 5)) {
             galleryItem.classList.add("hidden-tablette");
         }
-        galleryItem.innerHTML = `
-
-            <img src="${movieData.image_url}" alt="${movieData.title}" class="image${index}">
-            <div class="overlay">
-                    <h3 class="text">${movieData.title}</h3>
-                    <div class="button-container">
-                        <button class="btn detail" id=${movieData.id}>Détails</button>
-                    </div>
-            </div>
-            
-        `;
         
+        checkIfImageExists(movieData.image_url, "./images/not_available.png", (validUrl) => {
+            movieData.image_url = validUrl;
+            galleryItem.innerHTML = `
+            
+             <img src=" ${movieData.image_url}" alt="${movieData.title}" class="image${index}">
+            
+             <div class="overlay">
+                     <h3 class="text">${movieData.title}</h3>
+                     
+                     <div class="button-container">
+                         <button class="btn detail" id=${movieData.id}>Détails</button>
+                     </div>
+             </div>
+                 
+             `;    
+        
+            });
+        
+            
+
     return galleryItem;
     
 };
@@ -121,7 +128,6 @@ async function displayMovies(genre, idGallery){
 
     const gallery = document.getElementById(idGallery);
     const moviesData = await getDataMoviesGenre(genre);
-    const moviesLength = (moviesData.length >= 6) ? 6 : moviesData.length;
     gallery.innerHTML = "";
     for (let i = 0; i < 6; i++){
         const movieCard = createMovieCard(moviesData[i], i);
@@ -147,6 +153,7 @@ for (let i=0; i<listBoutons.length; i++){
     
     boutonactuel.addEventListener('click', (event) =>{
         const monBouton = event.target;
+        console.log(monBouton.id);
         displayMovieDetails(monBouton.id);
         const modal = document.getElementById("modal");
         modal.style.display = "block";
@@ -188,41 +195,40 @@ async function getMovieDetails(movieId){
 async function displayMovieDetails(movieId){
 
     const data = await getMovieDetails(movieId);
-    const modalContent = document.querySelector(".modal-content");
     
-   
-
-    modalContent.innerHTML = `
-        
-        <div class="modal_info">
-            <h2 class="modal-title">${data.title}</h2>
-            <div class="modal-info-details">
-                <span class="info">${data.year} - ${data.genres.join(", ")}</span><br>
-                <span class="info">${data.rated} - ${data.duration} minutes (${data.countries.join(" / ")})</span><br>
-                <span class="info"> Recettes (usa / world): ${data.worldwide_gross_income || "inconnu"} / ${data.worldwide_gross_income || "inconnu" }</span><br>
-                <br>
+    
+    checkIfImageExists(data.image_url, "./images/not_available.png", (validUrl) => {
+        data.image_url = validUrl;
+        const modalContent = document.querySelector(".modal-content");
+        modalContent.innerHTML = `
+            
+            <div class="modal_info">
+                <h2 class="modal-title">${data.title}</h2>
+                <div class="modal-info-details">
+                    <span class="info">${data.year} - ${data.genres.join(", ")}</span><br>
+                    <span class="info">${data.rated} - ${data.duration} minutes (${data.countries.join(" / ")})</span><br>
+                    <span class="info"> Recettes (usa / world): ${data.worldwide_gross_income || "inconnu"} / ${data.worldwide_gross_income || "inconnu" }</span><br>
+                    <br>
+                </div>
+                <span id="Realise">Réalisé par</h3><br>
+                <span id="directors">${data.directors.join(", ")}</p>                
             </div>
-            <span id="Realise">Réalisé par</h3>
-            <span id="directors">${data.directors.join(", ")}</p>                
-        </div>
-        <div class="modal-body">
-            <p class="modal-description">${data.long_description}</p>
-        </div>
-        <div class="modal-img">
-            <img src="${data.image_url}" alt="${data.title}">
-        </div>
 
-        <div class="modal-actors">
-            <h5>Avec</h5>
-            <p class="actors">${data.actors.join(", ")} </p></p>
-        </div>
+            <div class="modal-body">
+                <p class="modal-description">${data.long_description}</p>
+            </div>
 
-        <div class="modal-btn"> 
-            <button id="modal-close">Fermer</button>
-        </div>
-        
+            <div class="modal-img">
+                <img src="${data.image_url}" alt="${data.title}">
+            </div>
 
-        `
+            <div class="modal-actors">
+                <h5>Avec</h5>
+                <p class="actors">${data.actors.join(", ")} </p></p>
+            </div>
+            `;
+
+            });
 
 }
 
@@ -286,46 +292,6 @@ listeSelect1.addEventListener('change', async function() {
 listeSelect2.addEventListener('change', async function() {
     await displayMovies(listeSelect2.value, "gallery5");
 });
-
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const buttons = document.querySelectorAll(".toggleButton button");
-//     console.log(buttons);
-
-//     buttons.forEach(button => {
-//         button.addEventListener("click", function () {
-//             // Récupère l'ID de la galerie associée au bouton
-//             const galleryId = this.id.replace("toggleButton-", "");
-//             console.log(galleryId);
-//             const galleryItems = document.querySelectorAll(`#${galleryId} .gallery-item-5, #${galleryId} .gallery-item-6`);
-
-//             // Vérifie si les éléments de la galerie sont masqués
-//             const isHidden = Array.from(galleryItems).some(item => item.classList.contains("hidden"));
-
-//             // Alterne la classe 'hidden' sur les éléments de la galerie
-//             galleryItems.forEach(item => {
-//                 item.classList.toggle("hidden");
-//             });
-
-//             // Met à jour le texte du bouton
-//             this.textContent = isHidden ? "afficher moins" : "voir plus";
-//         });
-//     });
-// });
-
-const buttonG1 = document.getElementById("toggleButton-gallery1");
-
-
-buttonG1.addEventListener("click", function (event) {
-    const galleryID = this.id.replace("toggleButton-", "");
-    const galleryItems = document.querySelectorAll(`#${galleryID} .gallery-item6, #${galleryID} .gallery-item7`);
-    const isHidden = Array.from(galleryItems).some(item => item.classList.contains("hidden"));
-    galleryItems.forEach(item => {
-        item.classList.toggle("hidden-mobile");
-    });
-    this.textContent = isHidden ? "voir moins" : "voir plus";
-    });
 
 
 const buttonCloseModal = document.getElementById("modal-close");

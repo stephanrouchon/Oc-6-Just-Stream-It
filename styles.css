@@ -89,6 +89,15 @@ h2 {
   }
 }
 
+button {
+  background-color: red;
+  text-align: center;
+  margin: 10px;
+  border: none;
+  color: white;
+  border-radius: 25px;
+}
+
 .bestfilm {
   display: block;
   border: #000000 6px solid;
@@ -203,27 +212,36 @@ h2 {
     font-size: 28px;
   }
 }
-.bestfilm .detail {
+.bestfilm .bf-button {
   text-align: center;
+  display: block;
 }
-@media (min-width: 769px) {
-  .bestfilm .detail {
+@media (min-width: 769px) and (max-width: 960px) {
+  .bestfilm .bf-button {
+    text-align: right;
+    margin-right: 10px;
+  }
+}
+@media (min-width: 961px) {
+  .bestfilm .bf-button {
     text-align: right;
   }
 }
-
-button {
-  background-color: red;
-  text-align: center;
-  margin: 10px;
-  border: none;
-  color: white;
-  border-radius: 25px;
-}
-
-#bf-button-detail {
+.bestfilm #bf-button-detail {
   width: 91px;
   height: 40px;
+}
+@media (min-width: 769px) and (max-width: 960px) {
+  .bestfilm #bf-button-detail {
+    width: 123px;
+    height: 49px;
+  }
+}
+@media (min-width: 961px) {
+  .bestfilm #bf-button-detail {
+    width: 166px;
+    height: 68px;
+  }
 }
 
 .gallery {
@@ -408,7 +426,6 @@ button {
   padding-left: 10px;
 }
 .overlay .button-container {
-  text-align: right;
   padding-right: 10px;
 }
 
@@ -483,8 +500,7 @@ button {
   right: 10%;
   top: 0;
   background-color: #ffffff;
-  width: 506px;
-  text-align: justify;
+  max-width: 506px;
   border: #000000 6px solid;
   padding: 10px;
 }
@@ -494,7 +510,7 @@ button {
     position: fixed;
     left: 20%;
     top: 0;
-    width: 778px;
+    max-width: 778px;
     height: auto;
     right: 20%;
   }
@@ -509,9 +525,10 @@ button {
   .modal-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 280px 220px 130px 36px;
+    grid-template-rows: 300px 220px 220px 36px;
     height: auto;
     overflow-y: auto;
+    width: 778px;
     max-width: 778px;
   }
 }
@@ -524,7 +541,7 @@ button {
     grid-column: 1/2;
     grid-row: 1/2;
     padding: 0px;
-    max-width: 400px;
+    max-width: 423px;
     font-weight: 600;
     padding: 10px;
     line-height: 35px;
@@ -574,8 +591,12 @@ button {
   .modal-body {
     font-size: 24px;
     grid-column: 1/3;
-    grid-row: 2/3;
-    padding: 10px;
+    grid-row-start: 2;
+    margin-top: 10px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
@@ -594,6 +615,17 @@ button {
   .modal-actors {
     grid-column: 1/3;
     grid-row: 4/5;
+    margin: 10px;
+  }
+}
+
+.modal-button {
+  display: none;
+}
+@media (min-width: 960px) {
+  .modal-button {
+    display: block;
+    text-align: center;
     margin: 10px;
   }
 }
