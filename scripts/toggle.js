@@ -1,6 +1,5 @@
 const buttonG1 = document.getElementById("toggleButton-gallery1");
 const toggleButtons = document.querySelectorAll(".toggle");
-console.log(toggleButtons);
 
 for (let i=0; i<toggleButtons.length; i++){
     

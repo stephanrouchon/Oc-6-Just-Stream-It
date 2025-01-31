@@ -19,21 +19,21 @@
 
 <!-- section pour le film avec la meilleur note-->
 
-    <div>
-        <h2>Meilleur film</h2>
-        <div class="bestfilm">
-            <div class="bf-jacket"><img src="./images/thebiglebowski.png" id="bf-jacket" alt=""></div>
-            <div class="bf-title"><h3>Titre du film</h3></div>
-            <div class="bf-description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Vel ad, rerum sunt itaque saepe aspernatur obcaecati ipsa, soluta repellendus
-                 sint libero veniam unde tenetur corporis expedita nihil, aliquam culpa magni.</p>
-            </div>
-            
-            <div class="bf-button">
-                <button id="bf-button-detail" class="btn detail">détails</button>
-            </div>
-        </div>
+    
+<h2>Meilleur film</h2>
+<div class="bestfilm">
+    <div class="bf-jacket"><img src="./images/thebiglebowski.png" id="bf-jacket" alt=""></div>
+    <div class="bf-title"><h3>Titre du film</h3></div>
+    <div class="bf-description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Vel ad, rerum sunt itaque saepe aspernatur obcaecati ipsa, soluta repellendus
+            sint libero veniam unde tenetur corporis expedita nihil, aliquam culpa magni.</p>
     </div>
+    
+    <div class="bf-button-container">
+        <button id="bf-button-detail" class="btn detail">détails</button>
+    </div>
+</div>
+    
    
 <!--galerie pour les films mysterieux-->
 
@@ -107,14 +107,15 @@
 
 <!-- Modale affichéee lors des appuis sur les boutons détails-->
     <div id="modal" class="modal">
-        <span class="close" id="close-modal">&times;</span>
-
+        <div class="modal-header">
+            <span class="close" id="close-modal">&times;</span>
+        </div>
     
         <div class="modal-content">
             
         </div>   
         <div class="modal-btn"> 
-            <button id="modal-close">Fermer</button>
+            <button id="modal-close" class="modal-button">Fermer</button>
         </div>
     
     </div>

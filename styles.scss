@@ -5,6 +5,7 @@
 }
 
 body{
+    
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -82,6 +83,7 @@ h2{
     margin-right: 20px;
     margin-top : 10px;
     text-align: center;
+
     @media (min-width:769px){
         text-align: left;
         margin-left: 40px;
@@ -97,35 +99,62 @@ button{
     border:none;
     color: white;
     border-radius: 25px;
+    padding : 2px 4px 2px 4px;
+
+    @media (min-width:769px){
+        margin: 20px;
+    }
 }
+// #bestfilm-container{
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     text-align: center;
+//     margin: 0 auto;
+
+//     @media (min-width: 769px){
+//         display: block;
+      
+//     }
+// }
 
 .bestfilm {
 
-    display:block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     border: #000000 6px solid;
-    margin-top : 20px;
-    margin-left : 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin: 10px auto;
+    width: 329px;
 
-    @media (min-width:769px){
-
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 60px 234px 30px 30px;
-    grid-gap: 10px;
-    padding: 0px;
-    margin-top : 20px;
-    margin-left : 40px;
-    margin-right: 40px;
-    overflow: hidden;
+    @media (min-width:769px) and (max-width:960px){
+        width: 618px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 60px 234px 30px 30px;
+        grid-gap: 10px;
+        // padding: 0px;
+        // margin-top : 20px;
+        // margin-left : 40px;
+        // margin-right: 40px;
+        overflow: hidden;
     }
+
+    @media (min-width:961px){
+        width: 835px;
+        display : grid;
+        
+    }
+
+
 
     img {
         width: 293px;
         height: auto;
         object-fit: cover;
         overflow: hidden;
+        margin-top: 10px;
         
         @media (min-width:961px){
             height: auto;
@@ -168,7 +197,6 @@ button{
     .bf-title {
 
         font-size: 32px;
-        margin: 10px;
 
         @media (min-width:769px){
             grid-column: 2 / 3;
@@ -215,51 +243,48 @@ button{
         }
     }
 
-    .bf-button{
+    .bf-button-container{
         text-align: center;
-        display: block;
 
         @media (min-width:769px) and (max-width:960px){
-            
             text-align: right;
             margin-right: 10px;
-
         }
 
         @media (min-width:961px){
-            
             text-align: right;
-            
         }
     }
 
-    #bf-button-detail{
-        width: 91px;
-        height: 40px;
     
-        @media (min-width:769px) and (max-width:960px){
-            width: 123px;
-            height: 49px;
-         }
-    
-        @media (min-width:961px){
-            width: 166px;
-            height: 68px;
-        }
-    
+}
+
+#bf-button-detail{
+    width: 91px;
+    height: 40px;
+
+    @media (min-width:769px) and (max-width:960px){
+        width: 123px;
+        height: 49px;
+     }
+
+    @media (min-width:961px){
+        width: 166px;
+        height: 68px;
     }
+
 }
 
 
 
 
-
-
 .gallery{
-    margin: 20px 40px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 10px;
+    text-align: center;
+    margin: 0 auto;
+    
 
     @media (min-width:769px){
         display: grid;
@@ -270,7 +295,6 @@ button{
     
     @media (min-width:769px) and (max-width:960px){
         grid-template-columns: 1fr 1fr;
-       
     }
 
     img{
@@ -282,7 +306,6 @@ button{
         align-items: center;
         justify-content: center;
     }
-
 }
 
 .gallery-item1 {
@@ -506,44 +529,49 @@ button{
 
 }
 
-.modal{
+#modal {
     display: none;
-    position:absolute;
+    position:fixed;
     left:10%;
     right: 10%;
     top: 0;
     background-color: #ffffff;
-    max-width: 506px;
-    // text-align: justify;
     border: #000000 6px solid;
     padding: 10px;
+    max-width: 506px;
 
     @media (min-width: 960px){
         display: none;
         position: fixed;
         left: 20%;
         top: 0;
-        max-width: 778px;
-        height: auto;
         right: 20%;
+        width: 778px;
+        max-width: 778px;
         
     }
+}
 
+.modal-header{
+    text-align: right;
 }
 
 .modal-content{
     background-color: #ffffff;
-    width: 423px;
+    width: auto;
+    height: auto;
+    overflow-y: auto;
     max-width: 423px;
     
     @media (min-width: 960px){
         display: grid;
         grid-template-columns: 2fr 1fr;
-        grid-template-rows: 300px 220px 220px 36px;
-        height: auto;
+        grid-template-rows: auto auto auto 36px;
+        max-width: 778px;
         overflow-y: auto;
         width: 778px;
-        max-width: 778px;
+        height: auto;
+        
     }
 }
 
@@ -555,14 +583,19 @@ button{
         grid-row: 1/2;
         padding: 0px;
         max-width: 423px;
-        font-weight: 600;
-        padding :10px;
-        line-height: 35px; 
+        padding :10px; 
         justify-content: left;
         width: auto;
     }
   
-  .modal_info h2 {
+    h2 {
+        font-size: 48px;
+        text-align: left;
+        margin-left:  0px;
+        margin-right: 0px;
+        margin-top :  0px;
+
+
         @media (min-width: 960px){
             font-size: 48px;
             font-weight: 600;
@@ -570,14 +603,18 @@ button{
         }
     }
 
-  
+    .info{
+        text-align: left;
+        justify-content: left;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 35.57px;
+    }
 }
 
-.modal-info-detail {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 35.57px;
-}
+  
+
+
 .modal_info span {
 
     font-size: 24px;
@@ -592,12 +629,32 @@ button{
 
 .modal-img {
     text-align: center;
+    width: 409px;
+    height: auto;
 
     @media (min-width: 960px){
         grid-column: 2/3;
         grid-row: 1/2;
         padding: 10px;
-    }   
+    }
+
+    img{
+        width: 409px;
+        height: auto;
+        object-fit: cover;
+        overflow: hidden;
+        margin-top: 10px;
+
+
+        @media (min-width: 960px){
+            width: 227px;
+            height: auto;
+            object-fit: cover;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+    }
+    
 }
 
 .modal-body {
@@ -618,7 +675,7 @@ button{
 }
 
 .modal-actors {
-    text-align: justify;
+    text-align: left;
     font-size: 20px;
     line-height: 29.64px;
 
@@ -630,21 +687,41 @@ button{
         font-weight: 300;
     }
 
+    .actors{
+        font-size: 20px;
+        font-weight: 300;
+    }
+
     @media (min-width: 960px){
         
         grid-column: 1/3;
         grid-row: 4/5;
         margin: 10px;
     }
-    }
 
-.modal-button{
-    display: none;
-    
+}
+
+
+.modal-btn {
+    display: block;
+    text-align: center;
+    margin: 10px;
+
+    @media (max-width: 960px){
+        display: none;
+    }
+}
+
+
+
+
+
+.modal-button {
 
     @media (min-width: 960px){
-        display :block;
         text-align: center;
         margin: 10px;
+        width: 214px;
+        height: 36px;
     }
 }

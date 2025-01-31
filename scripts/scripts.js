@@ -153,12 +153,9 @@ for (let i=0; i<listBoutons.length; i++){
     
     boutonactuel.addEventListener('click', (event) =>{
         const monBouton = event.target;
-        console.log(monBouton.id);
         displayMovieDetails(monBouton.id);
         const modal = document.getElementById("modal");
         modal.style.display = "block";
-
-        
     });
 };
 
@@ -203,15 +200,16 @@ async function displayMovieDetails(movieId){
         modalContent.innerHTML = `
             
             <div class="modal_info">
-                <h2 class="modal-title">${data.title}</h2>
-                <div class="modal-info-details">
-                    <span class="info">${data.year} - ${data.genres.join(", ")}</span><br>
-                    <span class="info">${data.rated} - ${data.duration} minutes (${data.countries.join(" / ")})</span><br>
-                    <span class="info"> Recettes (usa / world): ${data.worldwide_gross_income || "inconnu"} / ${data.worldwide_gross_income || "inconnu" }</span><br>
-                    <br>
-                </div>
-                <span id="Realise">Réalisé par</h3><br>
-                <span id="directors">${data.directors.join(", ")}</p>                
+            <h2 class="modal-title">${data.title}</h2>
+            <div class="modal-info-details">
+                <span class="info">${data.year} - ${data.genres.join(", ")}</span><br>
+                <span class="info">${data.rated === "Not rated or unkown rating" ? "NR" : data.rated} - ${data.duration} minutes (${data.countries.join(" / ")})</span><br>
+                <span class="info">IMDB score: ${data.avg_vote} / 10</span><br>
+                <span class="info"> Recettes (usa / world): ${data.worldwide_gross_income || "NC"} / ${data.worldwide_gross_income || "NC" }</span><br>
+                <br>
+            </div>
+            <span id="Realise">Réalisé par</h3><br>
+            <span id="directors">${data.directors.join(", ")}</p>                
             </div>
 
             <div class="modal-body">
@@ -223,8 +221,8 @@ async function displayMovieDetails(movieId){
             </div>
 
             <div class="modal-actors">
-                <h5>Avec</h5>
-                <p class="actors">${data.actors.join(", ")} </p></p>
+            <h5>Avec</h5>
+            <p class="actors">${data.actors.join(", ")} </p>
             </div>
             `;
 
