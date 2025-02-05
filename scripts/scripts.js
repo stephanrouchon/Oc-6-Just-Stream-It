@@ -116,8 +116,6 @@ function createMovieCard(movieData, index){
         
             });
         
-            
-
     return galleryItem;
     
 };
@@ -135,29 +133,17 @@ async function displayMovies(genre, idGallery){
     };
 }
 
-
 // display Gallerys
+async function displayGallerys(){
+    await displayMovies("Mystery", "gallery1");
+    await displayMovies("Animation", "gallery2");
+    await displayMovies("Horror", "gallery3");
+    await displayMovies("Family", "gallery4");
+    await displayMovies("Comedy", "gallery5");
+    displayModal();
+}
 
-await displayMovies("Animation", "gallery2");
-await displayMovies("Horror", "gallery3");
-await displayMovies("Family", "gallery4");
-await displayMovies("Comedy", "gallery5");
-await displayMovies("Mystery", "gallery1");
-
-
-
-const listBoutons = document.querySelectorAll("button.btn.detail");
-
-for (let i=0; i<listBoutons.length; i++){
-    let boutonactuel = listBoutons[i];
-    
-    boutonactuel.addEventListener('click', (event) =>{
-        const monBouton = event.target;
-        displayMovieDetails(monBouton.id);
-        const modal = document.getElementById("modal");
-        modal.style.display = "block";
-    });
-};
+displayGallerys();
 
 async function getGenres() {
     const genresJSON = await getJSON(ApiGenresURL);
@@ -276,25 +262,55 @@ async function changeMovieData(id){
     });
 }
 
+function displayModal(){
+    const listBoutons = document.querySelectorAll("button.btn.detail");
 
+    for (let i=0; i<listBoutons.length; i++){
+        let boutonactuel = listBoutons[i];
+        
+        boutonactuel.addEventListener('click', (event) =>{
+            const monBouton = event.target;
+            console.log("Button clicked:", monBouton.id);
+            displayMovieDetails(monBouton.id);
+            const modal = document.getElementById("modal");
+            modal.style.display = "block";
+        });
+    };
+}
+
+displayModal();
 //On recupere le select
 let listeSelect1 = document.getElementById("select-genre1");
 let listeSelect2 = document.getElementById("select-genre2");
 
 //on affiche la valeur du select
+async function displayMoviesSelect(){
+    await displayMovies(listeSelect1.value, "gallery4");
+    await displayMovies(listeSelect2.value, "gallery5");
+    displayModal();
+}
 
 listeSelect1.addEventListener('change', async function() {
     await displayMovies(listeSelect1.value, "gallery4");
+    displayModal();
 });
 
 listeSelect2.addEventListener('change', async function() {
     await displayMovies(listeSelect2.value, "gallery5");
+    displayModal();
 });
+
+
+
+
+
+
 
 
 const buttonCloseModal = document.getElementById("modal-close");
 
-buttonCloseModal.addEventListener('click', (event) =>{
+buttonCloseModal.addEventListener('click', () =>{
     const modal = document.getElementById("modal");
     modal.style.display = "none";
 });
+

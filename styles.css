@@ -236,19 +236,18 @@ button {
     text-align: right;
   }
 }
-
-#bf-button-detail {
+.bestfilm .bf-button-container .detail {
   width: 91px;
   height: 40px;
 }
 @media (min-width: 769px) and (max-width: 960px) {
-  #bf-button-detail {
+  .bestfilm .bf-button-container .detail {
     width: 123px;
     height: 49px;
   }
 }
 @media (min-width: 961px) {
-  #bf-button-detail {
+  .bestfilm .bf-button-container .detail {
     width: 166px;
     height: 68px;
   }
@@ -535,6 +534,7 @@ button {
   background-color: #ffffff;
   width: auto;
   height: auto;
+  max-height: 90vh;
   overflow-y: auto;
   max-width: 423px;
 }

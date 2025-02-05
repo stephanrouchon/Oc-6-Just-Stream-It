@@ -254,29 +254,23 @@ button{
         @media (min-width:961px){
             text-align: right;
         }
-    }
-
     
-}
-
-#bf-button-detail{
-    width: 91px;
-    height: 40px;
-
-    @media (min-width:769px) and (max-width:960px){
-        width: 123px;
-        height: 49px;
-     }
-
-    @media (min-width:961px){
-        width: 166px;
-        height: 68px;
+        .detail{
+            width: 91px;
+            height: 40px;
+        
+            @media (min-width:769px) and (max-width:960px){
+                width: 123px;
+                height: 49px;
+            }
+        
+            @media (min-width:961px){
+                width: 166px;
+                height: 68px;
+            }
+        }
     }
-
 }
-
-
-
 
 .gallery{
     display: flex;
@@ -538,6 +532,7 @@ button{
     background-color: #ffffff;
     border: #000000 6px solid;
     padding: 10px;
+    
     max-width: 506px;
 
     @media (min-width: 960px){
@@ -560,6 +555,7 @@ button{
     background-color: #ffffff;
     width: auto;
     height: auto;
+    max-height: 90vh;
     overflow-y: auto;
     max-width: 423px;
     
