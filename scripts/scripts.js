@@ -270,7 +270,6 @@ function displayModal(){
         
         boutonactuel.addEventListener('click', (event) =>{
             const monBouton = event.target;
-            console.log("Button clicked:", monBouton.id);
             displayMovieDetails(monBouton.id);
             const modal = document.getElementById("modal");
             modal.style.display = "block";
@@ -299,13 +298,6 @@ listeSelect2.addEventListener('change', async function() {
     await displayMovies(listeSelect2.value, "gallery5");
     displayModal();
 });
-
-
-
-
-
-
-
 
 const buttonCloseModal = document.getElementById("modal-close");
 
